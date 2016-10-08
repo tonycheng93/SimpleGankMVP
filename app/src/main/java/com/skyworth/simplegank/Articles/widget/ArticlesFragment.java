@@ -4,6 +4,7 @@ package com.skyworth.simplegank.Articles.widget;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.skyworth.simplegank.Articles.presenter.ArticlesPresenterImpl;
 import com.skyworth.simplegank.Articles.view.ArticlesView;
 import com.skyworth.simplegank.R;
 import com.skyworth.simplegank.entity.ArticleItem;
+import com.skyworth.simplegank.utils.Debugger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +53,7 @@ public class ArticlesFragment extends Fragment implements ArticlesView {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = new ArticlesPresenterImpl(this);
+        mPresenter.loadArticles("Android",1);
     }
 
     @Override
@@ -62,6 +65,7 @@ public class ArticlesFragment extends Fragment implements ArticlesView {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.articles_list);
 
         mAdapter = new ArticlesAdapter(getActivity());
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter.setOnItemClickListener(mOnItemClickListener);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnScrollListener(mOnScrollListener);
@@ -91,7 +95,7 @@ public class ArticlesFragment extends Fragment implements ArticlesView {
 
     @Override
     public void showLoadFailMsg() {
-
+        Debugger.e(TAG,"数据加载失败！");
     }
 
     private ArticlesAdapter.OnItemClickListener mOnItemClickListener = new ArticlesAdapter.OnItemClickListener() {

@@ -22,7 +22,7 @@ public class ArticlesModelImpl implements ArticlesModel {
 
     @Override
     public void loadArticles(String category, int page, final onLoadArticlesListener listener) {
-        String url = "http://gank.io/api/data/" + category + "/10/ " + page;
+        String url = "http://gank.io/api/data/" + category + "/10/" + page;
         GsonRequest<ArticlesWrapper> request = new GsonRequest<>(Request.Method.GET,
                 url, ArticlesWrapper.class, new Response.Listener<ArticlesWrapper>() {
             @Override

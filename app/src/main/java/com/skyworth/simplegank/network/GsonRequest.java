@@ -1,7 +1,5 @@
 package com.skyworth.simplegank.network;
 
-import android.content.Context;
-
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;

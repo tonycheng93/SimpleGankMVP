@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.skyworth.simplegank.R;
 import com.skyworth.simplegank.entity.ArticleItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.Articl
     private static final String TAG = "ArticlesAdapter";
 
     private Context mContext;
-    private List<ArticleItem> mArticleItems;
+    private List<ArticleItem> mArticleItems = new ArrayList<>();
 
     private OnItemClickListener mOnItemClickListener;
 
@@ -35,7 +36,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.Articl
     }
     @Override
     public ArticlesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_articles, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_articles, parent, false);
         return new ArticlesViewHolder(view);
     }
 
